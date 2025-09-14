@@ -1,0 +1,37 @@
+{
+	"name": "doovate-web",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''"
+	},
+	"devDependencies": {
+		"@smui/button": "^8.0.1",
+		"@smui/card": "^8.0.1",
+		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/kit": "^2.26.1",
+		"@sveltejs/vite-plugin-svelte": "^6.0.0",
+		"@types/node": "^24.1.0",
+		"sass-embedded": "^1.89.2",
+		"svelte": "^5.37.0",
+		"svelte-check": "^4.3.0",
+		"typescript": "^5.8.3",
+		"vite": "^7.0.4"
+	},
+	"dependencies": {
+		"@popperjs/core": "^2.11.8",
+		"@smui/icon-button": "^8.0.1",
+		"@sveltestrap/sveltestrap": "^7.1.0",
+		"@zerodevx/svelte-json-view": "^1.0.11",
+		"bootstrap": "^5.3.7",
+		"js-cookie": "^3.0.5",
+		"keycloak-js": "^26.2.0",
+		"oidc-client": "^1.11.5",
+		"svelte-jsoneditor": "^3.8.0",
+		"svelte-pdf": "^1.0.28"
+	}
+}
