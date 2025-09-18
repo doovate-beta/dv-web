@@ -1,27 +1,19 @@
 <script lang="ts">
     import 'bootstrap/dist/css/bootstrap.min.css';
     import {onMount, setContext} from 'svelte';
-    import {MediaQuery} from 'svelte/reactivity';
-    import {browser} from '$app/environment';
 
     import {
         innerWidth,
     } from 'svelte/reactivity/window';
 
-    let isNavbarOpen = $state(false);
-
-    // const largeScreen = $derived(innerWidth.current > 800);
-
     onMount(async () => {
         await import('bootstrap/dist/js/bootstrap.bundle.min.js');
     });
 
-    // Crea una función que devuelva si es desktop
+    // This function calculates if the screen is desktop or not and returns a boolean value.
     const getIsDesktop = () => innerWidth.current >= 992;
 
-    // Expón la función
+    // Set the context value for the getIsDesktop function.
     setContext<() => boolean>('getIsDesktop', getIsDesktop);
-
-
 </script>
 <slot/>
