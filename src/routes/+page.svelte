@@ -1,13 +1,6 @@
 <script lang="ts">
     import {getContext, onMount} from 'svelte';
     import {
-        Navbar,
-        Nav,
-        NavItem,
-        NavLink,
-        NavbarBrand,
-        NavbarToggler,
-        Collapse,
         Form,
         FormGroup,
         Input,
@@ -20,7 +13,6 @@
         Card
     } from '@sveltestrap/sveltestrap';
 
-    let isNavbarOpen = $state(false);
     let validated = $state(false);
     let isSubmitting = $state(false);
 
@@ -44,21 +36,7 @@
         }
     };
 
-    // Cerrar navbar móvil al hacer click en un enlace
-    const handleNavClick = () => {
-        if (!largeScreen) {
-            isNavbarOpen = false;
-        }
-    };
 
-    onMount(() => {
-        import('bootstrap').then(({ScrollSpy}) => {
-            new ScrollSpy(document.body, {
-                target: '#navbar',
-                offset: 100
-            });
-        });
-    });
 </script>
 
 <svelte:head>
@@ -67,61 +45,6 @@
           content="Implementamos y personalizamos Odoo, el ERP más completo del mercado, para digitalizar y optimizar todos los procesos de tu empresa.">
     <meta name="keywords" content="Odoo, ERP, CRM, digitalización empresarial, automatización">
 </svelte:head>
-
-<Navbar
-        id="navbar"
-        container="sm"
-        fixed="top"
-        class="pb-2 pt-2 rounded-5 w-75 mx-auto mt-3 shadow-sm"
-        style="background-color: #977acd; transition: all 0.3s ease;"
->
-    {#if !largeScreen}
-        <NavbarBrand class="me-auto">
-            <div class="d-flex align-items-center">
-                <img src="/dv_logo.png" alt="Doovate logo" class="me-2" style="height: 30px" loading="lazy">
-                <span class="fw-bold text-white">Doovate</span>
-            </div>
-        </NavbarBrand>
-        <NavbarToggler
-                class="mb-3 border-0"
-                on:click={() => isNavbarOpen = !isNavbarOpen}
-                aria-expanded={isNavbarOpen}
-                aria-label="Toggle navigation"
-        />
-
-        <Collapse navbar isOpen={isNavbarOpen}>
-            <Nav pills class="ms-auto">
-                <NavItem>
-                    <NavLink href="#intro" class="text-white" on:click={handleNavClick}>Inicio</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="#features" class="text-white" on:click={handleNavClick}>Soluciones</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="#contact" class="text-white" on:click={handleNavClick}>Contacto</NavLink>
-                </NavItem>
-            </Nav>
-        </Collapse>
-    {:else}
-        <Nav pills class="mx-auto">
-            <NavbarBrand class="me-4">
-                <div class="d-flex align-items-center">
-                    <img src="/dv_logo.png" alt="Doovate logo" class="me-2" style="height: 30px" loading="lazy">
-                    <span class="fw-bold text-white">Doovate</span>
-                </div>
-            </NavbarBrand>
-            <NavItem>
-                <NavLink href="#intro" class="text-white px-3">Inicio</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href="#features" class="text-white px-3">Soluciones</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href="#contact" class="text-white px-3">Contacto</NavLink>
-            </NavItem>
-        </Nav>
-    {/if}
-</Navbar>
 
 <main class="container-fluid py-5">
     <!-- Sección Intro -->
