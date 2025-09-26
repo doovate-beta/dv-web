@@ -20,7 +20,9 @@
     setContext<() => boolean>('getIsDesktop', getIsDesktop);
 </script>
 
-{@render children()}
+<div id="page-content" class="page-content">
+    {@render children()}
+</div>
 
 <Navbar
         id="navbar"
@@ -46,13 +48,13 @@
         <Collapse navbar isOpen={isNavbarOpen}>
             <Nav class="ms-auto">
                 <NavItem>
-                    <NavLink href="#" class="text-white">Inicio</NavLink>
+                    <NavLink href="/" class="text-white">Inicio</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="#services" class="text-white">Servicios</NavLink>
+                    <NavLink href="/services" class="text-white">Servicios</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="#contact" class="text-white">Contacto</NavLink>
+                    <NavLink href="/contact" class="text-white">Contacto</NavLink>
                 </NavItem>
             </Nav>
         </Collapse>
@@ -82,7 +84,7 @@
 <!-- Persistent Footer matching the Navbar style and logo -->
 <Navbar
         id="footer"
-        class="pb-2 pt-2 w-100 m-0 rounded-0"
+        class="pb-5 pt-3 w-100 m-0 rounded-0"
         style="background-color: #977acd; transition: all 0.3s ease;"
 >
     <div class="w-100" style="border-top: 1px solid rgba(255,255,255,.35);"></div>
@@ -107,3 +109,17 @@
         </div>
     </div>
 </Navbar>
+
+
+<style>
+    /* Space from the fixed top navbar and ensure footer sits at bottom */
+    #page-content {
+        padding-top: 90px; /* navbar height offset */
+        padding-bottom: 60px; /* bottom spacing for all routes */
+        min-height: calc(100vh - 88px); /* subtract approx taller footer height */
+    }
+
+    @media (max-width: 576px) {
+        #page-content { padding-left: 8px; padding-right: 8px; }
+    }
+</style>
