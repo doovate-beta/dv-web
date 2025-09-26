@@ -29,13 +29,13 @@
         container="sm"
         fixed="top"
         class="pb-2 pt-2 rounded-5 w-75 mx-auto mt-3 shadow-lg"
-        style="background-color: #977acd; transition: all 0.3s ease;"
+        style="background-color: #ffffff; transition: all 0.3s ease;"
 >
     {#if !getIsDesktop()}
         <NavbarBrand class="me-auto">
             <div class="d-flex align-items-center">
                 <img src="/dv_logo.png" alt="Doovate logo" class="me-2" style="height: 30px" loading="lazy">
-                <span class="fw-bold text-white">Doovate</span>
+                <span class="fw-bold text-dark">Doovate</span>
             </div>
         </NavbarBrand>
         <NavbarToggler
@@ -48,13 +48,13 @@
         <Collapse navbar isOpen={isNavbarOpen}>
             <Nav class="ms-auto">
                 <NavItem>
-                    <NavLink href="/" class="text-white">Inicio</NavLink>
+                    <NavLink href="/" class="text-dark">Inicio</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/services" class="text-white">Servicios</NavLink>
+                    <NavLink href="/services" class="text-dark">Servicios</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/contact" class="text-white">Contacto</NavLink>
+                    <NavLink href="/contact" class="text-dark">Contacto</NavLink>
                 </NavItem>
             </Nav>
         </Collapse>
@@ -63,17 +63,17 @@
             <NavbarBrand class="me-4">
                 <div class="d-flex align-items-center">
                     <img src="/dv_logo.png" alt="Doovate logo" class="me-2" style="height: 30px" loading="lazy">
-                    <span class="fw-bold text-white">Doovate</span>
+                    <span class="fw-bold text-dark">Doovate</span>
                 </div>
             </NavbarBrand>
             <NavItem>
-                <NavLink href="/" class="text-white px-3">Inicio</NavLink>
+                <NavLink href="/" class="text-dark px-3">Inicio</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="/services" class="text-white px-3">Servicios</NavLink>
+                <NavLink href="/services" class="text-dark px-3">Servicios</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="/contact" class="text-white px-3">Contacto</NavLink>
+                <NavLink href="/contact" class="text-dark px-3">Contacto</NavLink>
             </NavItem>
         </Nav>
     {/if}
@@ -112,6 +112,32 @@
 
 
 <style>
+    /* Global full-page animated background image */
+    :global(html), :global(body) {
+        height: 100%;
+    }
+    :global(body) {
+        position: relative;
+        background: none;
+    }
+    :global(body)::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url('/images/hero.jpg');
+        background-size: cover;
+        background-position: center center;
+        will-change: transform;
+        transform: scale(1);
+        animation: bgKenBurns 90s ease-in-out infinite alternate;
+        z-index: -1;
+        pointer-events: none;
+    }
+    @keyframes bgKenBurns {
+        from { transform: scale(1); }
+        to { transform: scale(1.2); }
+    }
+
     /* Space from the fixed top navbar and ensure footer sits at bottom */
     #page-content {
         padding-top: 90px; /* navbar height offset */
