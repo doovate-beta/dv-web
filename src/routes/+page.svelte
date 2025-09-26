@@ -47,17 +47,17 @@
     <meta name="keywords" content="Odoo, ERP, CRM, digitalización empresarial, automatización">
 </svelte:head>
 
-<main class="container-fluid pb-5 pt-0">
-    <!-- Sección Intro (Hero con fondo y zoom) -->
-    <section id="intro" style="scroll-margin-top: 50px;" class="mb-5 hero-section">
-        <Container class="py-5 mb-5 position-relative">
+<main class="container-fluid py-5">
+    <!-- Sección Intro -->
+    <section id="intro" style="scroll-margin-top: 50px;" class="mb-5">
+        <Container class="py-5 mb-5 mt-3">
             <Row class="align-items-center min-vh-50">
-                <Col md={8} lg={7} class="mb-4 mb-md-0">
-                    <h1 class="display-5 fw-bold text-white mb-4">
+                <Col md={6} class="mb-4 mb-md-0">
+                    <h1 class="display-5 fw-bold text-body-emphasis mb-4">
                         Digitalizamos tu empresa con
                         <span class="text-primary">Odoo</span>
                     </h1>
-                    <p class="lead mb-4 text-white-50">
+                    <p class="lead mb-4">
                         Implementamos y personalizamos Odoo, el ERP más completo del mercado,
                         para que todos tus procesos trabajen en un solo lugar:
                         CRM, ventas, facturación, inventario, proyectos, RR. HH. y más.
@@ -67,11 +67,20 @@
                             <Icon name="person-fill" class="me-2"/>
                             Habla con un experto
                         </Button>
-                        <Button color="light" size="lg" href="#features" class="px-4 py-3">
+                        <Button color="outline-secondary" size="lg" href="#features" class="px-4 py-3">
                             <Icon name="play-fill" class="me-2"/>
                             Ver demo
                         </Button>
                     </div>
+                </Col>
+                <Col md={6} class="text-center">
+                    <img
+                            src="/images/hero.jpg"
+                            alt="Imagen principal del sitio"
+                            class="img-fluid rounded shadow-lg object-fit-cover"
+                            loading="lazy"
+                            style="max-height: 520px; width: 100%;"
+                    />
                 </Col>
             </Row>
         </Container>
@@ -414,29 +423,4 @@
         width: 1rem;
         height: 1rem;
     }
-
-    /* Hero background con zoom lento (hasta 20%) */
-    .hero-section {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0;
-    }
-    /* Overlay eliminado para quitar sombreado oscuro */
-    .hero-section::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: none;
-        z-index: 1;
-        pointer-events: none;
-    }
-    /* Asegurar que el contenido quede por encima del fondo */
-    .hero-section :global(.container),
-    .hero-section :global(.container-fluid),
-    .hero-section :global(.row),
-    .hero-section :global(.col) {
-        position: relative;
-        z-index: 2;
-    }
-
 </style>
