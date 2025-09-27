@@ -28,14 +28,14 @@
         id="navbar"
         container="sm"
         fixed="top"
-        class="pb-2 pt-2 rounded-5 w-75 mx-auto mt-3 shadow-lg"
-        style="background-color: #977acd; transition: all 0.3s ease;"
+        class="pb-2 pt-2 rounded-5 mx-auto mt-3 shadow-lg"
+        style="background: linear-gradient(135deg, #15a8ca, #840d83); width: 92%; transition: all 0.3s ease;"
 >
     {#if !getIsDesktop()}
         <NavbarBrand class="me-auto">
             <div class="d-flex align-items-center">
-                <img src="/dv_logo.png" alt="Doovate logo" class="me-2" style="height: 30px" loading="lazy">
-                <span class="fw-bold text-white">Doovate</span>
+                <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height:36px" loading="lazy">
+                <span class="fw-bold text-white fs-4">Doovate</span>
             </div>
         </NavbarBrand>
         <NavbarToggler
@@ -48,13 +48,13 @@
         <Collapse navbar isOpen={isNavbarOpen}>
             <Nav class="ms-auto">
                 <NavItem>
-                    <NavLink href="/" class="text-white">Inicio</NavLink>
+                    <NavLink href="/" class="text-white fs-5 py-2">Inicio</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/services" class="text-white">Servicios</NavLink>
+                    <NavLink href="/services" class="text-white fs-5 py-2">Servicios</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="/contact" class="text-white">Contacto</NavLink>
+                    <NavLink href="/contact" class="text-white fs-5 py-2">Contacto</NavLink>
                 </NavItem>
             </Nav>
         </Collapse>
@@ -62,18 +62,18 @@
         <Nav underline class="mx-auto">
             <NavbarBrand class="me-4">
                 <div class="d-flex align-items-center">
-                    <img src="/dv_logo.png" alt="Doovate logo" class="me-2" style="height: 30px" loading="lazy">
-                    <span class="fw-bold text-white">Doovate</span>
+                    <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height: 36px" loading="lazy">
+                    <span class="fw-bold text-white fs-4">Doovate</span>
                 </div>
             </NavbarBrand>
             <NavItem>
-                <NavLink href="/" class="text-white px-3">Inicio</NavLink>
+                <NavLink href="/" class="text-white px-4 fs-5">Inicio</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="/services" class="text-white px-3">Servicios</NavLink>
+                <NavLink href="/services" class="text-white px-4 fs-5">Servicios</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="/contact" class="text-white px-3">Contacto</NavLink>
+                <NavLink href="/contact" class="text-white px-4 fs-5">Contacto</NavLink>
             </NavItem>
         </Nav>
     {/if}
@@ -85,12 +85,12 @@
 <Navbar
         id="footer"
         class="pb-5 pt-3 w-100 m-0 rounded-0"
-        style="background-color: #977acd; transition: all 0.3s ease;"
+        style="background: linear-gradient(135deg, #15a8ca, #840d83); transition: all 0.3s ease;"
 >
     <div class="w-100" style="border-top: 1px solid rgba(255,255,255,.35);"></div>
     <div class="d-flex align-items-center justify-content-between w-100 px-2 pt-2">
         <div class="d-flex align-items-center text-white" style="opacity: .9;">
-            <img src="/dv_logo.png" alt="Doovate logo" class="me-2" style="height: 22px" loading="lazy">
+            <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height: 22px" loading="lazy">
             <span>© {currentYear} Doovate</span>
         </div>
         <div class="d-flex align-items-center gap-3">
@@ -112,14 +112,107 @@
 
 
 <style>
+    /* Brand theme overrides */
+    :root {
+        --brand-cyan: #15a8ca;
+        --brand-purple: #840d83;
+        --brand-gradient: linear-gradient(135deg, #15a8ca, #840d83);
+    }
+
+    /* Utilities */
+    :global(.brand-gradient) { background: var(--brand-gradient) !important; }
+    :global(.gradient-text) {
+        background: var(--brand-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+
+    /* Bootstrap color overrides */
+    :global(.text-primary) { color: var(--brand-purple) !important; }
+    :global(.link-primary) { color: var(--brand-cyan) !important; }
+    :global(.link-primary:hover),
+    :global(.link-primary:focus) { color: var(--brand-purple) !important; }
+
+    :global(.border-primary) { border-color: var(--brand-cyan) !important; }
+
+    :global(.bg-primary) { background: var(--brand-gradient) !important; }
+    :global(.badge.bg-primary),
+    :global(.btn .badge.bg-primary) { background: var(--brand-gradient) !important; }
+
+    :global(.btn-primary) {
+        color: #fff !important;
+        background: var(--brand-gradient) !important;
+        background-color: var(--brand-cyan) !important; /* fallback */
+        border-color: var(--brand-purple) !important;
+    }
+    :global(.btn-primary:hover),
+    :global(.btn-primary:focus),
+    :global(.btn-primary:active),
+    :global(.btn-primary.active),
+    :global(.show > .btn-primary.dropdown-toggle) {
+        color: #fff !important;
+        background: linear-gradient(135deg, #1296b5, #6d0f6c) !important;
+        border-color: #6d0f6c !important;
+    }
+
+    :global(.btn-outline-primary) {
+        color: var(--brand-purple) !important;
+        border-color: var(--brand-purple) !important;
+        background-color: transparent !important;
+    }
+    :global(.btn-outline-primary:hover),
+    :global(.btn-outline-primary:focus),
+    :global(.btn-outline-primary:active) {
+        color: #fff !important;
+        background: var(--brand-gradient) !important;
+        border-color: var(--brand-purple) !important;
+    }
+
+    :global(.btn-primary:focus),
+    :global(.btn-outline-primary:focus) {
+        box-shadow: 0 0 0 0.25rem rgba(132, 13, 131, 0.25) !important;
+    }
+
+    /* Text selection highlight */
+    :global(::selection) { background: #15a8ca; color: #fff; }
+
     /* Space from the fixed top navbar and ensure footer sits at bottom */
     #page-content {
-        padding-top: 90px; /* navbar height offset */
+        padding-top: 100px; /* navbar height offset (slightly reduced due to thinner navbar) */
         padding-bottom: 60px; /* bottom spacing for all routes */
         min-height: calc(100vh - 88px); /* subtract approx taller footer height */
     }
 
     @media (max-width: 576px) {
         #page-content { padding-left: 8px; padding-right: 8px; }
+    }
+
+    /* Pale global background image using /images/hero.jpg */
+    :global(body) {
+        background-color: #f8f9fa; /* light fallback in case image is missing */
+        min-height: 100vh;
+    }
+    :global(body)::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image: url('/images/hero.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.1 ; /* a bit less pale */
+        filter: saturate(1) brightness(1) contrast(1);
+        pointer-events: none;
+        animation: bg-zoom 40s ease-in-out infinite alternate;
+        transform-origin: center;
+        will-change: transform;
+    }
+
+    @keyframes bg-zoom {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.6); }
     }
 </style>

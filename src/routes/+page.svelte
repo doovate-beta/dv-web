@@ -55,7 +55,7 @@
                 <Col md={6} class="mb-4 mb-md-0">
                     <h1 class="display-5 fw-bold text-body-emphasis mb-4">
                         Digitalizamos tu empresa con
-                        <span class="text-primary">Odoo</span>
+                        <span class="gradient-text">Odoo</span>
                     </h1>
                     <p class="lead mb-4">
                         Implementamos y personalizamos Odoo, el ERP más completo del mercado,
@@ -75,7 +75,7 @@
                 </Col>
                 <Col md={6} class="text-center">
                     <img
-                            src="/images/hero.jpg"
+                            src="/Design.png"
                             alt="Imagen principal del sitio"
                             class="img-fluid rounded shadow-lg object-fit-cover"
                             loading="lazy"
@@ -91,13 +91,15 @@
         <Container>
             <Row class="align-items-center">
                 <Col lg={6} class="order-lg-2 text-center mb-4 mb-lg-0">
-                    <img
-                            src="/phone.png"
-                            alt="Odoo en dispositivos móviles"
-                            class="img-fluid drop-shadow"
-                            style="max-width: 400px;"
-                            loading="lazy"
-                    />
+                    <div class="frost-card d-inline-block p-4" style="--frost-radius: 28px; --frost-opacity: .92; --frost-brightness: 1; --frost-blur: 8px;">
+                        <img
+                                src="/phone.png"
+                                alt="Odoo en dispositivos móviles"
+                                class="img-fluid"
+                                style="max-width: 400px;"
+                                loading="lazy"
+                        />
+                    </div>
                 </Col>
                 <Col lg={6} class="order-lg-1">
                     <div class="pe-lg-4">
@@ -301,7 +303,7 @@
             </Row>
 
             <!-- Comparación visual mejorada -->
-            <Container fluid class="p-4 p-md-5 bg-white rounded-4 shadow-sm">
+            <Container fluid class="p-4 p-md-5 frost-card" style="--frost-radius: 18px; --frost-opacity: .96; --frost-brightness: 1; --frost-blur: 6px;">
                 <Row class="align-items-center">
                     <Col md={12} class="text-center mb-4">
                         <h3 class="fw-bold mb-3">Menos herramientas. Más resultados.</h3>
@@ -387,6 +389,20 @@
     /* Altura mínima para la sección hero */
     .min-vh-50 {
         min-height: 50vh;
+    }
+
+    /* Tarjeta con fondo editable (radio, opacidad, brillo y blur) */
+    .frost-card {
+        --frost-radius: 16px;
+        --frost-opacity: .9;         /* 0–1 */
+        --frost-brightness: 1;       /* e.g., .9 a 1.2 */
+        --frost-blur: 8px;           /* e.g., 0px a 20px */
+
+        border-radius: var(--frost-radius);
+        background: rgba(255, 255, 255, var(--frost-opacity));
+        -webkit-backdrop-filter: blur(var(--frost-blur)) brightness(var(--frost-brightness));
+        backdrop-filter: blur(var(--frost-blur)) brightness(var(--frost-brightness));
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
     }
 
     /* Efecto de sombra suave para imágenes */
