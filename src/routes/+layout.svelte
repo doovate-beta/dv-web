@@ -29,7 +29,7 @@
         container="sm"
         fixed="top"
         class="pb-2 pt-2 rounded-5 mx-auto mt-3 shadow-lg"
-        style="background: linear-gradient(135deg, #15a8ca, #840d83); width: 92%; transition: all 0.3s ease;"
+        style="background: linear-gradient(135deg, #c8d6ea, #999bde); width: 92%; transition: all 0.3s ease;"
 >
     {#if !getIsDesktop()}
         <NavbarBrand class="me-auto">
@@ -85,13 +85,13 @@
 <Navbar
         id="footer"
         class="pb-5 pt-3 w-100 m-0 rounded-0"
-        style="background: linear-gradient(135deg, #15a8ca, #840d83); transition: all 0.3s ease;"
+        style="background: linear-gradient(135deg, #acc7ea, #8486dc); transition: all 0.3s ease;"
 >
     <div class="w-100" style="border-top: 1px solid rgba(255,255,255,.35);"></div>
     <div class="d-flex align-items-center justify-content-between w-100 px-2 pt-2">
         <div class="d-flex align-items-center text-white" style="opacity: .9;">
             <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height: 22px" loading="lazy">
-            <span>© {currentYear} Doovate</span>
+            <span style="color: black">© {currentYear} Doovate</span>
         </div>
         <div class="d-flex align-items-center gap-3">
             <a href="https://instagram.com/doovate" target="_blank" rel="noopener" class="text-white" style="opacity:.85;">
