@@ -59,7 +59,7 @@
             </Nav>
         </Collapse>
     {:else}
-        <Nav underline class="mx-auto">
+        <Nav class="mx-auto align-items-center">
             <NavbarBrand class="me-4">
                 <div class="d-flex align-items-center">
                     <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height: 36px" loading="lazy">
@@ -214,5 +214,27 @@
     @keyframes bg-zoom {
         0% { transform: scale(1); }
         100% { transform: scale(1.6); }
+    }
+
+    /* Navbar link hover/active with brand colors */
+    :global(#navbar .nav-link) {
+        border-radius: 9999px; /* round base shape */
+        padding: 0.25rem 0.75rem; /* ensure some breathing room for pill */
+        display: inline-flex; /* vertically center text inside */
+        align-items: center; /* same height alignment */
+        transition: background-color .25s ease, color .25s ease, box-shadow .25s ease, transform .2s ease;
+    }
+    :global(#navbar .nav-link:hover),
+    :global(#navbar .nav-link:focus) {
+        color: #fff !important;
+        background: linear-gradient(135deg, rgba(21,168,202,.28), rgba(132,13,131,.28));
+        box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 6px 14px rgba(0,0,0,.08);
+        text-decoration: none !important; /* keep it clean */
+    }
+    :global(#navbar .nav-link:active),
+    :global(#navbar .nav-link.active) {
+        color: #fff !important;
+        background: linear-gradient(135deg, rgba(21,168,202,.45), rgba(132,13,131,.45));
+        box-shadow: 0 0 0 2px rgba(255,255,255,.22) inset, 0 4px 10px rgba(0,0,0,.12);
     }
 </style>

@@ -418,12 +418,6 @@
         transition: all 0.3s ease;
     }
 
-    /* Mejora visual del navbar */
-    :global(#navbar .nav-link:hover) {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 0.375rem;
-        transition: background-color 0.3s ease;
-    }
 
     /* Espaciado consistente entre secciones */
     section + section {
