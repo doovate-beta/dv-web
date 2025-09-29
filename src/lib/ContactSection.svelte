@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import {
         Form,
         FormGroup,
@@ -14,8 +15,9 @@
 
     let validated = $state(false);
     let isSubmitting = $state(false);
+    let nextUrlInput: HTMLInputElement | null = null;
 
-    // Función para manejar el envío del formulario (placeholder)
+    // Mantener placeholder por si en el futuro se usa envío manual
     const handleSubmit = async (e: Event) => {
         e.preventDefault();
         if (isSubmitting) return;
@@ -25,12 +27,19 @@
 
         if (form.checkValidity()) {
             isSubmitting = true;
-            // Aquí iría la lógica de envío real (fetch/API)
             await new Promise((resolve) => setTimeout(resolve, 1000));
             isSubmitting = false;
-            // Mostrar mensaje de éxito o limpiar formulario
         }
     };
+
+    onMount(() => {
+        // Asegura que FormSubmit redirija a nuestro dominio absoluto
+        try {
+            if (typeof window !== 'undefined' && nextUrlInput) {
+                nextUrlInput.value = `${window.location.origin}/gracias`;
+            }
+        } catch {}
+    });
 </script>
 
 <!-- Sección Contact (reusable) -->
@@ -46,11 +55,19 @@
                 <Card class="shadow-sm border-0">
                     <CardBody class="p-4">
                         <h4 class="mb-4">Cuéntanos sobre tu proyecto</h4>
-                        <Form {validated} on:submit={handleSubmit}>
+                        <Form {validated} action="https://formsubmit.co/sysadmin@doovate.com" method="POST">
+                            <!-- FormSubmit configuration -->
+                            <input type="hidden" name="_subject" value="Nuevo mensaje desde doovate.com" />
+                            <input type="hidden" name="_template" value="table" />
+                            <input type="hidden" name="_captcha" value="false" />
+                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+                            <!-- Redirect after submit: set dynamically to absolute /gracias URL for FormSubmit -->
+                            <input type="hidden" name="_next" value="/gracias" bind:this={nextUrlInput} />
                             <Row class="g-3">
                                 <Col md={6}>
                                     <FormGroup floating label="Nombre">
                                         <Input
+                                            name="name"
                                             feedback="Por favor ingresa tu nombre"
                                             placeholder="Nombre"
                                             required
@@ -61,6 +78,7 @@
                                 <Col md={6}>
                                     <FormGroup floating label="Correo electrónico">
                                         <Input
+                                            name="email"
                                             placeholder="Correo electrónico"
                                             feedback="Por favor ingresa un correo válido"
                                             required
@@ -72,6 +90,7 @@
                                 <Col md={6}>
                                     <FormGroup floating label="Teléfono">
                                         <Input
+                                            name="phone"
                                             placeholder="Teléfono"
                                             feedback="Por favor ingresa un teléfono válido"
                                             required
@@ -83,6 +102,7 @@
                                 <Col md={6}>
                                     <FormGroup floating label="Empresa">
                                         <Input
+                                            name="company"
                                             placeholder="Empresa"
                                             feedback="Por favor ingresa tu empresa"
                                             required
@@ -93,6 +113,7 @@
                                 <Col xs={12}>
                                     <FormGroup floating label="Mensaje">
                                         <Input
+                                            name="message"
                                             style="min-height: 120px"
                                             type="textarea"
                                             placeholder="Cuéntanos sobre tu proyecto y necesidades..."
@@ -143,12 +164,12 @@
                         </div>
                         <div class="d-flex mb-4">
                             <Icon name="envelope-fill" class="text-primary me-3 mt-1"/>
-                            <a href="mailto:contacto@doovate.com" class="text-decoration-none">contacto@doovate.com</a>
+                            <a href="mailto:sysadmin@doovate.com" class="text-decoration-none">sysadmin@doovate.com</a>
                         </div>
                     </div>
 
                     <div class="d-grid gap-2">
-                        <Button href="mailto:contacto@doovate.com" color="success" size="lg">
+                        <Button href="mailto:sysadmin@doovate.com" color="success" size="lg">
                             <Icon name="calendar-check" class="me-2"/>
                             Agendar llamada
                         </Button>
