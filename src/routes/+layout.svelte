@@ -6,6 +6,13 @@
 
     let {children} = $props();
 
+    let routes = {
+        "": "Inicio",
+        "services": "Servicios",
+        "pricing": "Precios",
+        "contact": "Contacto",
+    }
+
     onMount(async () => {
         await import('bootstrap/dist/js/bootstrap.bundle.min.js');
     });
@@ -34,7 +41,8 @@
     {#if !getIsDesktop()}
         <NavbarBrand class="me-auto">
             <div class="d-flex align-items-center">
-                <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height:36px" loading="lazy">
+                <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height:36px"
+                     loading="lazy">
                 <span class="fw-bold text-white fs-4">Doovate</span>
             </div>
         </NavbarBrand>
@@ -47,38 +55,30 @@
 
         <Collapse navbar isOpen={isNavbarOpen}>
             <Nav class="ms-auto">
-                <NavItem>
-                    <NavLink href="/" class="text-white fs-5 py-2">Inicio</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="/services" class="text-white fs-5 py-2">Servicios</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="/contact" class="text-white fs-5 py-2">Contacto</NavLink>
-                </NavItem>
+                {#each Object.entries(routes) as [route, label]}
+                    <NavItem>
+                        <NavLink href={route} class="text-white fs-5 py-2">{label}</NavLink>
+                    </NavItem>
+                {/each}
             </Nav>
         </Collapse>
     {:else}
         <Nav class="mx-auto align-items-center">
             <NavbarBrand class="me-4">
                 <div class="d-flex align-items-center">
-                    <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height: 36px" loading="lazy">
+                    <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height: 36px"
+                         loading="lazy">
                     <span class="fw-bold text-white fs-4">Doovate</span>
                 </div>
             </NavbarBrand>
-            <NavItem>
-                <NavLink href="/" class="text-white px-4 fs-5">Inicio</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href="/services" class="text-white px-4 fs-5">Servicios</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href="/contact" class="text-white px-4 fs-5">Contacto</NavLink>
-            </NavItem>
+            {#each Object.entries(routes) as [route, label]}
+                <NavItem>
+                    <NavLink href={route} class="text-white px-4 fs-5">{label}</NavLink>
+                </NavItem>
+            {/each}
         </Nav>
     {/if}
 </Navbar>
-
 
 
 <!-- Persistent Footer matching the Navbar style and logo -->
@@ -94,14 +94,17 @@
             <span style="color: black">© {currentYear} Doovate</span>
         </div>
         <div class="d-flex align-items-center gap-3">
-            <a href="https://instagram.com/doovate" target="_blank" rel="noopener" class="text-white" style="opacity:.85;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <a href="https://instagram.com/doovate" target="_blank" rel="noopener" class="text-white"
+               style="opacity:.85;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor"
+                     stroke-width="1.6" viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
                 </svg>
             </a>
-            <a href="https://facebook.com/doovate" target="_blank" rel="noopener" class="text-white" style="opacity:.85;">
+            <a href="https://facebook.com/doovate" target="_blank" rel="noopener" class="text-white"
+               style="opacity:.85;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06C2 17.08 5.66 21.2 10.44 22v-6.99H7.9v-2.95h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.95h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/>
                 </svg>
@@ -120,7 +123,10 @@
     }
 
     /* Utilities */
-    :global(.brand-gradient) { background: var(--brand-gradient) !important; }
+    :global(.brand-gradient) {
+        background: var(--brand-gradient) !important;
+    }
+
     :global(.gradient-text) {
         background: var(--brand-gradient);
         -webkit-background-clip: text;
@@ -130,16 +136,31 @@
     }
 
     /* Bootstrap color overrides */
-    :global(.text-primary) { color: var(--brand-purple) !important; }
-    :global(.link-primary) { color: var(--brand-cyan) !important; }
+    :global(.text-primary) {
+        color: var(--brand-purple) !important;
+    }
+
+    :global(.link-primary) {
+        color: var(--brand-cyan) !important;
+    }
+
     :global(.link-primary:hover),
-    :global(.link-primary:focus) { color: var(--brand-purple) !important; }
+    :global(.link-primary:focus) {
+        color: var(--brand-purple) !important;
+    }
 
-    :global(.border-primary) { border-color: var(--brand-cyan) !important; }
+    :global(.border-primary) {
+        border-color: var(--brand-cyan) !important;
+    }
 
-    :global(.bg-primary) { background: var(--brand-gradient) !important; }
+    :global(.bg-primary) {
+        background: var(--brand-gradient) !important;
+    }
+
     :global(.badge.bg-primary),
-    :global(.btn .badge.bg-primary) { background: var(--brand-gradient) !important; }
+    :global(.btn .badge.bg-primary) {
+        background: var(--brand-gradient) !important;
+    }
 
     :global(.btn-primary) {
         color: #fff !important;
@@ -147,6 +168,7 @@
         background-color: var(--brand-cyan) !important; /* fallback */
         border-color: var(--brand-purple) !important;
     }
+
     :global(.btn-primary:hover),
     :global(.btn-primary:focus),
     :global(.btn-primary:active),
@@ -162,6 +184,7 @@
         border-color: var(--brand-purple) !important;
         background-color: transparent !important;
     }
+
     :global(.btn-outline-primary:hover),
     :global(.btn-outline-primary:focus),
     :global(.btn-outline-primary:active) {
@@ -176,7 +199,10 @@
     }
 
     /* Text selection highlight */
-    :global(::selection) { background: #15a8ca; color: #fff; }
+    :global(::selection) {
+        background: #15a8ca;
+        color: #fff;
+    }
 
     /* Space from the fixed top navbar and ensure footer sits at bottom */
     #page-content {
@@ -186,7 +212,10 @@
     }
 
     @media (max-width: 576px) {
-        #page-content { padding-left: 8px; padding-right: 8px; }
+        #page-content {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
     }
 
     /* Pale global background image using /images/hero.jpg */
@@ -194,6 +223,7 @@
         background-color: #f8f9fa; /* light fallback in case image is missing */
         min-height: 100vh;
     }
+
     :global(body)::before {
         content: "";
         position: fixed;
@@ -203,7 +233,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        opacity: 0.1 ; /* a bit less pale */
+        opacity: 0.1; /* a bit less pale */
         filter: saturate(1) brightness(1) contrast(1);
         pointer-events: none;
         animation: bg-zoom 40s ease-in-out infinite alternate;
@@ -212,8 +242,12 @@
     }
 
     @keyframes bg-zoom {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.6); }
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1.6);
+        }
     }
 
     /* Navbar link hover/active with brand colors */
