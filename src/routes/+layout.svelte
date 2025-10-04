@@ -3,15 +3,16 @@
     import {onMount, setContext} from 'svelte';
     import {innerWidth} from 'svelte/reactivity/window';
     import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from "@sveltestrap/sveltestrap";
+    import { page } from '$app/stores';
 
     let {children} = $props();
 
-    let routes = {
-
-        "services": "Servicios",
-        "pricing": "Precios",
-        "contact": "Contacto",
-    }
+    // Root-relative routes for correct active detection
+    let routes: Record<string, string> = {
+        "/services": "Servicios",
+        "/pricing": "Precios",
+        "/contact": "Contacto",
+    };
 
     onMount(async () => {
         await import('bootstrap/dist/js/bootstrap.bundle.min.js');
@@ -25,6 +26,12 @@
 
     // Set the context value for the getIsDesktop function.
     setContext<() => boolean>('getIsDesktop', getIsDesktop);
+
+    // Determine if a given route is active based on current path
+    const isActive = (route: string) => {
+        const path = $page.url.pathname;
+        return path === route || path.startsWith(route + '/');
+    };
 </script>
 
 <div id="page-content" class="page-content">
@@ -55,13 +62,13 @@
             <Nav class="ms-auto">
                 {#each Object.entries(routes) as [route, label]}
                     <NavItem>
-                        <NavLink href={route} class="text-white fs-5 py-2">{label}</NavLink>
+                        <NavLink href={route} class={`text-white fs-5 py-2 ${isActive(route) ? 'active' : ''}`} aria-current={isActive(route) ? 'page' : undefined}>{label}</NavLink>
                     </NavItem>
                 {/each}
             </Nav>
         </Collapse>
     {:else}
-        <Nav class="mx-auto align-items-center">
+        <Nav class="mx-auto align-items-center gap-2">
             <NavbarBrand class="me-5">
                 <div class="d-flex align-items-center">
                     <img src="/logo-empresa-lateral-04.png" alt="Logo empresa" class="logo-white-glow" style="height: 40px" loading="lazy">
@@ -69,7 +76,7 @@
             </NavbarBrand>
             {#each Object.entries(routes) as [route, label]}
                 <NavItem>
-                    <NavLink href={route} class="text-white px-4 fs-5">{label}</NavLink>
+                    <NavLink href={route} class={`text-white px-4 fs-5 ${isActive(route) ? 'active' : ''}`} aria-current={isActive(route) ? 'page' : undefined}>{label}</NavLink>
                 </NavItem>
             {/each}
         </Nav>
