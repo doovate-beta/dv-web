@@ -62,7 +62,8 @@
 <section class="container py-5">
     <div class="text-center mb-5">
         <h1 class="display-5 fw-bold">Precios</h1>
-        <p class="text-muted mb-0">Elige el plan que mejor se adapte a tu negocio. Todos los planes incluyen soporte básico.</p>
+        <p class="text-muted mb-0">Elige el plan que mejor se adapte a tu negocio. Todos los planes incluyen soporte
+            básico.</p>
     </div>
 
     <div class="row g-4">
@@ -84,7 +85,8 @@
                         <ul class="list-unstyled m-0">
                             {#each plan.features as f}
                                 <li class="d-flex gap-2 align-items-start mb-2">
-                                    <span class="badge bg-primary" style="width: 0.6rem; height: 0.6rem; border-radius: 50%; padding:0;"></span>
+                                    <span class="badge bg-primary"
+                                          style="width: 0.6rem; height: 0.6rem; border-radius: 50%; padding:0;"></span>
                                     <span>{f}</span>
                                 </li>
                             {/each}
@@ -112,7 +114,7 @@
                     <div class="row g-3">
                         {#each extras as item}
                             <div class="col-12 col-md-6">
-                                <div class="d-flex gap-2">
+                                <div class="d-flex gap-2 align-items-start mb-2 bg-light p-3 rounded-3">
                                     <span class="text-primary">•</span>
                                     <span>{item}</span>
                                 </div>
@@ -142,6 +144,7 @@
         transition: transform 0.25s ease, box-shadow 0.25s ease, border-image 0.25s ease, border 0.25s ease;
         min-height: 560px; /* make the card taller to avoid cramped content */
     }
+
     .price-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
@@ -152,13 +155,14 @@
 
     /* Featured (Paquete medio) slightly larger to draw attention */
     .price-card.featured {
-        transform: translateY(-4px) scale(1.03);
+        transform: translateY(-4px) scale(1.08);
         z-index: 1;
         box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
         border: 2px solid transparent; /* persistent gradient border for featured */
         border-image: var(--brand-gradient) 1;
         border-radius: 1rem;
     }
+
     .price-card.featured:hover {
         transform: translateY(-10px) scale(1.06);
         border: 2px solid transparent;
@@ -178,16 +182,24 @@
         border-top-left-radius: 999px;
         border-bottom-left-radius: 999px;
         letter-spacing: .5px;
-        box-shadow: 0 6px 16px rgba(0,0,0,.15);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, .15);
         transform: rotate(2deg);
         user-select: none;
         pointer-events: none;
     }
+
     /* Slide-in from bottom reveal */
     @keyframes slideUp {
-        from { opacity: 0; transform: translateY(24px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
+
     .reveal-up {
         opacity: 0;
         animation: slideUp 600ms ease forwards;
@@ -202,6 +214,8 @@
     }
 
     @media (max-width: 576px) {
-        .price-card { min-height: 500px; }
+        .price-card {
+            min-height: 500px;
+        }
     }
 </style>
