@@ -2,8 +2,8 @@
     import 'bootstrap/dist/css/bootstrap.min.css';
     import {onMount, setContext} from 'svelte';
     import {innerWidth} from 'svelte/reactivity/window';
-    import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from "@sveltestrap/sveltestrap";
-    import { page } from '$app/stores';
+    import {Collapse, Icon, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from "@sveltestrap/sveltestrap";
+    import {page} from '$app/stores';
 
     let {children} = $props();
 
@@ -22,12 +22,12 @@
     let currentYear: number = new Date().getFullYear();
 
     // This function calculates if the screen is desktop or not and returns a boolean value.
-    const getIsDesktop = () => innerWidth.current >= 992;
+    const isDesktop = () => innerWidth.current >= 992;
 
     // Set the context value for the getIsDesktop function.
-    setContext<() => boolean>('getIsDesktop', getIsDesktop);
+    setContext<() => boolean>('getIsDesktop', isDesktop);
 
-    // Determine if a given route is active based on current path
+    // Determine if a given route is active based on the current path
     const isActive = (route: string) => {
         const path = $page.url.pathname;
         return path === route || path.startsWith(route + '/');
@@ -45,24 +45,26 @@
         class="pb-2 pt-2 rounded-5 mx-auto mt-3 shadow-lg"
         style="background: linear-gradient(135deg, #c8d6ea, #999bde); width: 92%; transition: all 0.3s ease;"
 >
-    {#if !getIsDesktop()}
+    <!--Mobile view-->
+    {#if !isDesktop()}
         <NavbarBrand class="me-auto">
             <div class="d-flex align-items-center">
-                <img src="/logo-empresa-lateral-04.png" alt="Logo empresa" class="logo-white-glow" style="height:40px" loading="lazy">
+                <img src="/logo-empresa-lateral-04.png" alt="Logo empresa" class="logo-white-glow" style="height:40px"
+                     loading="lazy">
             </div>
         </NavbarBrand>
         <NavbarToggler
-                class="mb-3 border-0"
+                class="mb-0 border-0"
                 on:click={() => isNavbarOpen = !isNavbarOpen}
                 aria-expanded={isNavbarOpen}
                 aria-label="Toggle navigation"
         />
-
-        <Collapse navbar isOpen={isNavbarOpen}>
+        <Collapse navbar isOpen={isNavbarOpen} class="w-100">
             <Nav class="ms-auto">
                 {#each Object.entries(routes) as [route, label]}
-                    <NavItem>
-                        <NavLink href={route} class={`text-white fs-5 py-2 ${isActive(route) ? 'active' : ''}`} aria-current={isActive(route) ? 'page' : undefined}>{label}</NavLink>
+                    <NavItem class="w-100 my-2">
+                        <NavLink href={route} class={`text-white fs-5 py-2 ${isActive(route) ? 'active' : ''}`}
+                                 aria-current={isActive(route) ? 'page' : undefined}>{label}</NavLink>
                     </NavItem>
                 {/each}
             </Nav>
@@ -71,12 +73,14 @@
         <Nav class="mx-auto align-items-center gap-2">
             <NavbarBrand class="me-5">
                 <div class="d-flex align-items-center">
-                    <img src="/logo-empresa-lateral-04.png" alt="Logo empresa" class="logo-white-glow" style="height: 40px" loading="lazy">
+                    <img src="/logo-empresa-lateral-04.png" alt="Logo empresa" class="logo-white-glow"
+                         style="height: 40px" loading="lazy">
                 </div>
             </NavbarBrand>
             {#each Object.entries(routes) as [route, label]}
                 <NavItem>
-                    <NavLink href={route} class={`text-white px-4 fs-5 ${isActive(route) ? 'active' : ''}`} aria-current={isActive(route) ? 'page' : undefined}>{label}</NavLink>
+                    <NavLink href={route} class={`text-white px-4 fs-5 ${isActive(route) ? 'active' : ''}`}
+                             aria-current={isActive(route) ? 'page' : undefined}>{label}</NavLink>
                 </NavItem>
             {/each}
         </Nav>
@@ -97,20 +101,12 @@
             <span style="color: black">© {currentYear} Doovate</span>
         </div>
         <div class="d-flex align-items-center gap-3">
-            <a href="https://instagram.com/doovate" target="_blank" rel="noopener" class="text-white"
-               style="opacity:.85;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor"
-                     stroke-width="1.6" viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-                </svg>
+            <a href="https://instagram.com">
+                <i class="bi bi-instagram fs-5 text-light"></i>
             </a>
-            <a href="https://facebook.com/doovate" target="_blank" rel="noopener" class="text-white"
-               style="opacity:.85;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06C2 17.08 5.66 21.2 10.44 22v-6.99H7.9v-2.95h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.95h-2.34V22C18.34 21.2 22 17.08 22 12.06z"/>
-                </svg>
+
+            <a href="https://facebook.com/doovate" target="_blank" rel="noopener" class="text-white">
+                <i class="bi bi-facebook fs-5 text-light"></i>
             </a>
         </div>
     </div>
@@ -152,9 +148,15 @@
     }
 
     @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -291,17 +293,19 @@
         align-items: center; /* same height alignment */
         transition: background-color .25s ease, color .25s ease, box-shadow .25s ease, transform .2s ease;
     }
+
     :global(#navbar .nav-link:hover),
     :global(#navbar .nav-link:focus) {
         color: #fff !important;
-        background: linear-gradient(135deg, rgba(21,168,202,.28), rgba(132,13,131,.28));
-        box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 6px 14px rgba(0,0,0,.08);
+        background: linear-gradient(135deg, rgba(21, 168, 202, .28), rgba(132, 13, 131, .28));
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, .18) inset, 0 6px 14px rgba(0, 0, 0, .08);
         text-decoration: none !important; /* keep it clean */
     }
+
     :global(#navbar .nav-link:active),
     :global(#navbar .nav-link.active) {
         color: #fff !important;
-        background: linear-gradient(135deg, rgba(21,168,202,.45), rgba(132,13,131,.45));
-        box-shadow: 0 0 0 2px rgba(255,255,255,.22) inset, 0 4px 10px rgba(0,0,0,.12);
+        background: linear-gradient(135deg, rgba(21, 168, 202, .45), rgba(132, 13, 131, .45));
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, .22) inset, 0 4px 10px rgba(0, 0, 0, .12);
     }
 </style>
