@@ -55,12 +55,12 @@
 
 </script>
 
-<Container  sm class="services-section py-5 px-5 rounded-5 bg-light " style="width: 92%">
+<section class="container py-5">
     <!-- Header de la sección -->
     <div class="text-center mb-5">
-        <h2 class="display-5 fw-bold text-dark mb-3">
+        <h1 class="display-5 fw-bold mb-3">
             ¿Qué ofrecemos?
-        </h2>
+        </h1>
         <p class="lead text-muted mx-auto services-subtitle">
             Soluciones de principio a fin para que Odoo impulse tu crecimiento
             con seguridad, velocidad y control.
@@ -71,7 +71,7 @@
     <Row class="g-4 mb-5">
         {#each services as service, index}
             <Col xs={12} md={6} lg={4}>
-                <Card class="service-card h-100 {service.featured ? 'featured-card' : ''}">
+                <Card class="service-card h-100 shadow-sm">
                     <!-- Header de la tarjeta -->
                     <div class="card-header-section">
                         {#if service.image}
@@ -139,13 +139,13 @@
                 Contáctanos para una consulta personalizada y descubre cómo podemos
                 ayudarte a optimizar tu negocio con Odoo.
             </p>
-            <Button color="primary" size="lg" class="cta-button">
+            <Button color="primary" size="lg" class="cta-button" href="/contact">
                 <i class="bi bi-calendar-check me-2"></i>
                 Agenda una consulta
             </Button>
         </div>
     </div>
-</Container>
+</section>
 
 <style>
     .services-section {
@@ -166,10 +166,10 @@
     }
 
     .service-card {
-        border: none;
+        border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 1rem;
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-        transition: all 0.3s ease;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-image 0.25s ease, border 0.25s ease;
         background: white;
         overflow: hidden;
         position: relative;
@@ -178,6 +178,9 @@
     .service-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
+        border: 2px solid transparent; /* required for border-image */
+        border-image: var(--brand-gradient) 1;
+        border-radius: 1rem;
     }
 
     .featured-card {

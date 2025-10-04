@@ -7,7 +7,7 @@
     let {children} = $props();
 
     let routes = {
-        "": "Inicio",
+
         "services": "Servicios",
         "pricing": "Precios",
         "contact": "Contacto",
@@ -41,9 +41,7 @@
     {#if !getIsDesktop()}
         <NavbarBrand class="me-auto">
             <div class="d-flex align-items-center">
-                <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height:36px"
-                     loading="lazy">
-                <span class="fw-bold text-white fs-4">Doovate</span>
+                <img src="/logo-empresa-lateral-04.png" alt="Logo empresa" class="logo-white-glow" style="height:40px" loading="lazy">
             </div>
         </NavbarBrand>
         <NavbarToggler
@@ -64,11 +62,9 @@
         </Collapse>
     {:else}
         <Nav class="mx-auto align-items-center">
-            <NavbarBrand class="me-4">
+            <NavbarBrand class="me-5">
                 <div class="d-flex align-items-center">
-                    <img src="/dv_logo.png" alt="Doovate logo" class="logo-white-glow me-2" style="height: 36px"
-                         loading="lazy">
-                    <span class="fw-bold text-white fs-4">Doovate</span>
+                    <img src="/logo-empresa-lateral-04.png" alt="Logo empresa" class="logo-white-glow" style="height: 40px" loading="lazy">
                 </div>
             </NavbarBrand>
             {#each Object.entries(routes) as [route, label]}
@@ -120,6 +116,7 @@
         --brand-cyan: #15a8ca;
         --brand-purple: #840d83;
         --brand-gradient: linear-gradient(135deg, #15a8ca, #840d83);
+        --brand-font: 'Saira', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
     }
 
     /* Utilities */
@@ -129,10 +126,34 @@
 
     :global(.gradient-text) {
         background: var(--brand-gradient);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
         color: transparent;
+        /* Increase perceived intensity without changing brand gradient elsewhere */
+        filter: saturate(1.2) contrast(1.08);
+        /* Subtle stroke to avoid washed-out edges on large headings */
+        -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.10);
+    }
+
+    /* Animated variant for gradient text */
+    :global(.gradient-animated) {
+        background-size: 200% 200% !important;
+        animation: gradientShift 6s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        :global(.gradient-animated) {
+            animation: none !important;
+        }
     }
 
     /* Bootstrap color overrides */
@@ -202,6 +223,11 @@
     :global(::selection) {
         background: #15a8ca;
         color: #fff;
+    }
+
+    /* Global font family */
+    :global(body) {
+        font-family: var(--brand-font);
     }
 
     /* Space from the fixed top navbar and ensure footer sits at bottom */

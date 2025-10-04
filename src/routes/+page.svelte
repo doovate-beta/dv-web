@@ -54,7 +54,7 @@
             <Col md={6} class="mb-4 mb-md-0">
                 <h1 class="display-5 fw-bold text-body-emphasis mb-4">
                     Digitalizamos tu empresa con
-                    <span class="gradient-text">Odoo</span>
+                    <span>Odoo</span>
                 </h1>
                 <p class="lead mb-4">
                     Implementamos y personalizamos Odoo, el ERP más completo del mercado,
@@ -66,10 +66,7 @@
                         <Icon name="person-fill" class="me-2"/>
                         Habla con un experto
                     </Button>
-                    <Button color="outline-secondary" size="lg" href="#features" class="px-4 py-3">
-                        <Icon name="play-fill" class="me-2"/>
-                        Ver demo
-                    </Button>
+
                 </div>
             </Col>
             <Col md={6} class="text-center">
