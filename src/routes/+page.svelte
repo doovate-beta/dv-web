@@ -73,7 +73,7 @@
                 <img
                         src="/Site Stats.svg"
                         alt="Imagen principal del sitio"
-                        class="img-fluid rounded shadow-lg object-fit-cover"
+                        class="img-fluid rounded object-fit-cover"
                         loading="lazy"
                         style="max-height: 520px; width: 100%;"
                 />
@@ -81,24 +81,26 @@
         </Row>
     </Container>
 
-    <!-- Sección Everywhere -->
+    <!-- Everywhere section -->
     <Container fluid class="py-5 bg-light w-100 rounded-5">
-        <Row class="align-items-center" style="padding-left: 20%; padding-right: 20%;">
-            <Col lg={4} class="order-lg-2 text-center mb-4 mb-lg-0">
+        <Row class="align-items-center justify-content-center gx-5 gy-4 px-4 px-md-5 px-lg-0">
+            <!-- Image -->
+            <Col xs={12} lg={4} class="order-lg-2 text-center">
                 <div class="frost-card d-inline-block p-4"
                      style="--frost-radius: 28px; --frost-opacity: .92; --frost-brightness: 1; --frost-blur: 8px;">
                     <img
-                            src="/Web devices.gif
-                           "
+                            src="/Web devices.gif"
                             alt="Odoo en dispositivos móviles"
                             class="img-fluid"
-                            style="max-width: 400px;"
+                            style="max-width: 100%; height: auto;"
                             loading="lazy"
                     />
                 </div>
             </Col>
-            <Col lg={8} class="order-lg-1">
-                <div class="pe-lg-4">
+
+            <!-- Content -->
+            <Col xs={12} lg={6} class="order-lg-1 text-center text-lg-start">
+                <div class="px-lg-4">
                     <h2 class="display-6 fw-bold text-body-emphasis mb-3">
                         Lleva tus herramientas a cualquier parte
                     </h2>
@@ -107,19 +109,19 @@
                         Gestiona tu negocio desde escritorio, tablet o móvil
                         con la misma experiencia fluida y completa.
                     </p>
-                    <Row class="g-3">
+                    <Row class="g-3 justify-content-center justify-content-lg-start">
                         {#each [
                             {icon: 'bi bi-shield-check', text: '100% Seguro'},
                             {icon: 'bi bi-arrow-repeat', text: 'Siempre actualizado'},
                             {icon: 'bi bi-cloud-check', text: 'Sin instalaciones'},
                             {icon: 'bi bi-people', text: 'Multi-usuario'}
                         ] as feature}
-                            <Col sm={6}>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-primary me-3">
+                            <Col xs={6} sm={6}>
+                                <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+                                    <div class="text-primary me-3 flex-shrink-0">
                                         <i class="{feature.icon} fs-1"></i>
                                     </div>
-                                    <span class="fw-medium">{feature.text}</span>
+                                    <span class="fw-medium text-start">{feature.text}</span>
                                 </div>
                             </Col>
                         {/each}
@@ -129,7 +131,7 @@
         </Row>
     </Container>
 
-    <!-- Sección Steps -->
+    <!-- Steps section -->
     <Container style="scroll-margin-top: 100px;" class="py-5">
         <div class="text-center mb-5">
             <h2 class="display-6 fw-bold text-body-emphasis mb-3">
@@ -297,7 +299,7 @@
         </Row>
 
         <!-- Comparación visual mejorada -->
-        <Container  class="p-4 p-md-5 frost-card"
+        <Container class="p-4 p-md-5 frost-card"
                    style="--frost-radius: 18px; --frost-opacity: .96; --frost-brightness: 1; --frost-blur: 6px;">
             <Row class="align-items-center">
                 <Col md={12} class="text-center mb-4">
@@ -357,7 +359,6 @@
                                     <img
                                             src="/oodo_logo.png"
                                             alt="Odoo logo"
-                                            class="img-fluid"
                                             style="max-width: 200px; height: auto;"
                                             loading="lazy"
                                     />
