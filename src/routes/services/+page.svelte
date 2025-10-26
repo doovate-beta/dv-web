@@ -15,21 +15,36 @@
         [
             {
                 "title": "Personalización a medida",
-                "description": "Transformamos Odoo en la herramienta perfecta para tu negocio. Diseñamos módulos, campos, reportes y automatizaciones que se ajustan exactamente a tus flujos de trabajo, para que tu equipo trabaje de forma más ágil y eficiente. Realizamos análisis funcional, configuramos permisos por rol, creamos vistas y lógica específica e integramos KPIs y tableros con datos en tiempo real. Trabajamos de forma iterativa para reducir riesgos y acelerar el go‑live.",
+                "description": "Transformamos Odoo en la herramienta perfecta para tu negocio.",
+                "points": [
+                    "Diseñamos módulos, campos, reportes y automatizaciones que se ajustan exactamente a tus flujos de trabajo, para que tu equipo trabaje de forma más ágil y eficiente.",
+                    "Realizamos análisis funcional, configuramos permisos por rol, creamos vistas y lógica específica e integramos KPIs y tableros con datos en tiempo real.",
+                    "Trabajamos de forma iterativa para reducir riesgos y acelerar el go‑live."
+                ],
                 "image": "/services/Personalization-amico.svg",
                 "icon": "🎯",
                 "category": "Desarrollo"
             },
             {
                 "title": "Menos herramientas, más control",
-                "description": "Despídete de múltiples aplicaciones y hojas de cálculo. Centraliza CRM, ventas, facturación, inventario y proyectos en una única plataforma, con datos siempre sincronizados y en tiempo real. Unificamos procesos clave, definimos flujos de aprobación y estandarizamos la información para eliminar duplicidades. Obtén trazabilidad completa del ciclo comercial y operativo, y reportes consistentes que alinean a todo tu equipo.",
+                "description": "Despídete de múltiples aplicaciones y hojas de cálculo.",
+                "points": [
+                    "Centraliza CRM, ventas, facturación, inventario y proyectos en una única plataforma, con datos siempre sincronizados y en tiempo real.",
+                    "Unificamos procesos clave, definimos flujos de aprobación y estandarizamos la información para eliminar duplicidades.",
+                    "Obtén trazabilidad completa del ciclo comercial y operativo, y reportes consistentes que alinean a todo tu equipo."
+                ],
                 "image": "/services/Digital tools-bro.svg",
                 "icon": "⚡",
                 "category": "Integración"
             },
             {
                 "title": "Hosting rápido y seguro",
-                "description": "Garantizamos que tu Odoo esté siempre disponible y protegido. Servidores optimizados, acceso desde cualquier lugar, copias de seguridad automáticas y monitoreo constante. Implementamos hardening de seguridad, SSL, políticas de acceso y alertas proactivas, con escalabilidad según demanda. Incluye actualizaciones planificadas y pruebas de rendimiento para asegurar tiempos de respuesta estables.",
+                "description": "Garantizamos que tu Odoo esté siempre disponible y protegido.",
+                "points": [
+                    "Servidores optimizados, acceso desde cualquier lugar, copias de seguridad automáticas y monitoreo constante.",
+                    "Implementamos hardening de seguridad, SSL, políticas de acceso y alertas proactivas, con escalabilidad según demanda.",
+                    "Incluye actualizaciones planificadas y pruebas de rendimiento para asegurar tiempos de respuesta estables."
+                ],
                 "image": "/services/Cloud hosting-amico.svg",
                 "icon": "🛡️",
                 "category": "Infraestructura",
@@ -37,21 +52,33 @@
             },
             {
                 "title": "Integraciones sin fricciones",
-                "description": "Conecta tu ecommerce, contabilidad, logística y pasarelas de pago para que la información fluya sin interrupciones. Diseñamos integraciones API‑first con colas y reintentos, mapeo de datos validado y monitoreo de eventos para detectar incidencias. Sincroniza productos, stock, pedidos y facturas con total trazabilidad entre sistemas y menos tareas manuales.",
+                "description": "Conecta tu ecommerce, contabilidad, logística y pasarelas de pago para que la información fluya sin interrupciones.",
+                "points": [
+                    "Diseñamos integraciones API‑first con colas y reintentos, mapeo de datos validado y monitoreo de eventos para detectar incidencias.",
+                    "Sincroniza productos, stock, pedidos y facturas con total trazabilidad entre sistemas y menos tareas manuales."
+                ],
                 "image": "/services/Software integration-pana.svg",
                 "icon": "🔗",
                 "category": "Conectividad"
             },
             {
                 "title": "Migración y datos seguros",
-                "description": "Importamos tu información desde sistemas anteriores con validaciones y trazabilidad en cada paso, para que empieces en Odoo con datos confiables. Ejecutamos limpieza, normalización y deduplicación; definimos plantillas estándar y realizamos cargas piloto antes del traslado final. Entregamos reportes de calidad de datos y un plan de reversión para minimizar riesgos.",
+                "description": "Importamos tu información desde sistemas anteriores con validaciones y trazabilidad en cada paso, para que empieces en Odoo con datos confiables.",
+                "points": [
+                    "Ejecutamos limpieza, normalización y deduplicación; definimos plantillas estándar y realizamos cargas piloto antes del traslado final.",
+                    "Entregamos reportes de calidad de datos y un plan de reversión para minimizar riesgos."
+                ],
                 "image": "/services/Secure Server-amico.svg",
                 "icon": "📊",
                 "category": "Migración"
             },
             {
                 "title": "Acompañamiento end-to-end",
-                "description": "Te guiamos en todo el camino: análisis de necesidades, implementación, formación de tu equipo y soporte continuo para garantizar resultados desde el primer día. Trabajamos con roadmap por fases, entregas quincenales y KPIs de adopción. Ofrecemos mesa de ayuda, manuales de uso, sesiones de entrenamiento por rol y mejoras evolutivas para que el sistema crezca con tu organización.",
+                "description": "Te guiamos en todo el camino: análisis de necesidades, implementación, formación de tu equipo y soporte continuo para garantizar resultados desde el primer día. ",
+                "points": [
+                    "Trabajamos con roadmap por fases, entregas quincenales y KPIs de adopción.",
+                    "Ofrecemos mesa de ayuda, manuales de uso, sesiones de entrenamiento por rol y mejoras evolutivas para que el sistema crezca con tu organización."
+                ],
                 "image": "/services/Helping a partner-cuate.svg",
                 "icon": "🤝",
                 "category": "Consultoría"
@@ -109,6 +136,11 @@
                             <CardText class="text-muted service-description">
                                 {service.description}
                             </CardText>
+                            {#each service.points as point}
+                                <ul>
+                                    <li>{point}</li>
+                                </ul>
+                            {/each}
                         </div>
 
                         <div class="mt-3">

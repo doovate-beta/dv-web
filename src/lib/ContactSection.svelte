@@ -155,14 +155,13 @@
                         <div class="d-flex mb-3">
                             <Icon name="geo-alt-fill" class="text-primary me-3 mt-1"/>
                             <div>
-                                <strong>Doovate C.B. </strong><br>
-                                Dirección completa<br>
-                                Ciudad, Estado, CP
+                                <strong>Doovate</strong><br>
+                                Madrid, España<br>
                             </div>
                         </div>
                         <div class="d-flex mb-3">
                             <Icon name="telephone-fill" class="text-primary me-3 mt-1"/>
-                            <a href="tel:613289829" class="text-decoration-none">613 489 829</a>
+                            <a href="tel:613489829" class="text-decoration-none">613 489 829</a>
                         </div>
                         <div class="d-flex mb-4">
                             <Icon name="envelope-fill" class="text-primary me-3 mt-1"/>
@@ -172,7 +171,7 @@
 
                     <div class="d-grid gap-2">
 
-                        <Button href="https://wa.me/XXXXXXXXXXX" target="_blank" color="outline-success" size="lg">
+                        <Button href="https://wa.me/34613489829" target="_blank" color="outline-success" size="lg">
                             <Icon name="whatsapp" class="me-2"/>
                             Hablar por WhatsApp
                         </Button>

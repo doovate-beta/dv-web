@@ -3,18 +3,18 @@
     type Feature = string;
     type Plan = {
         name: string;
-        price: string; // discounted price text (shown as actual)
-        originalPrice: string; // original price 10% higher (shown strikethrough)
+        price: number;
         specs: string;
         features: Feature[];
         highlight?: boolean;
     };
 
+    const discount = 10;
+
     const plans: Plan[] = [
         {
             name: 'Paquete básico',
-            price: 'Desde 60€',
-            originalPrice: 'Antes 66€',
+            price: 66,
             specs: '20 GB disco',
             features: [
                 'Instalación limitada de módulos: los 4 más importantes (Ventas, Compras, Facturación, Inventario)',
@@ -24,8 +24,7 @@
         },
         {
             name: 'Paquete medio',
-            price: 'Desde 140€',
-            originalPrice: 'Antes 154€',
+            price: 160,
             specs: '50 GB disco',
             highlight: true,
             features: [
@@ -38,8 +37,7 @@
         },
         {
             name: 'Paquete plus',
-            price: 'Desde 220€',
-            originalPrice: 'Antes 242€',
+            price: 250,
             specs: '75 GB disco',
             features: [
                 'Acceso a la suite completa de módulos de la versión Community de Odoo (20+ módulos)',
@@ -52,7 +50,7 @@
     ];
 
     const extras: Feature[] = [
-        'Migrar a Odoo Enterprise (premium) por 20€ por usuario',
+        // 'Migrar a Odoo Enterprise (premium) por 20€ por usuario',
         'Personalización de módulos según alcance (se cotiza)',
         'Incremento de recursos de la máquina con costo adicional',
         'Diseño de página web desde 100€ y mantenimiento desde 20€, basado en tráfico'
@@ -68,35 +66,56 @@
 
     <div class="row g-4">
         {#each plans as plan, i}
-            <div class="col-12 col-md-6 col-lg-4 d-flex reveal-up" style={`animation-delay: ${i * 120}ms`}>
+            <div class="col-12 col-md-6 mb-2 col-lg-4 d-flex reveal-up" style={`animation-delay: ${i * 120}ms`}>
                 <div class={`card shadow-sm mx-1 flex-fill h-100 price-card ${plan.highlight ? 'featured' : ''}`}>
-                    <div class="card-header bg-white border-0 pt-4 pb-0">
-                        <h3 class="h4 mb-1">{plan.name}</h3>
-                        <div class="text-muted">{plan.specs}</div>
+                    <div class="card-header bg-white border-0 pt-4 pb-3">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="plan-icon">
+                                <i class="bi bi-box"></i>
+                            </div>
+                            <h3 class="h4 mb-0 fw-bold">{plan.name}</h3>
+                        </div>
+                        <div class="text-muted small">{plan.specs}</div>
                     </div>
-                    <div class="card-body pt-3">
-                        <div class="mb-2">
-                            <span class="text-muted text-decoration-line-through small d-block">{plan.originalPrice}</span>
+                    <div class="card-body pt-0">
+                        <div class="price-section mb-4">
+                            <div class="text-muted text-decoration-line-through small mb-1">
+                                Antes {plan.price}€
+                                <span class="badge bg-primary mx-1 px-3 py-2">
+                            <i class="bi bi-lightning-charge-fill"></i> -{discount}% AHORA
+                        </span>
+                            </div>
+                            <div class="d-flex align-items-baseline gap-2 mb-2">
+                            <span class="display-5 fw-bold text-dark mb-0">
+                                {Math.round(plan.price * (100 - discount) / 100)}
+                            </span>
+                                <span class="h5 text-muted mb-0">€/mes</span>
+
+                            </div>
+
                         </div>
-                        <div class="d-flex align-items-center gap-2 mb-3">
-                            <span class="h2 mb-0">{plan.price}</span>
-                            <span class="badge bg-primary">-10% ahora</span>
-                        </div>
-                        <ul class="list-unstyled m-0">
-                            {#each plan.features as f}
-                                <li class="d-flex gap-2 align-items-start mb-2">
-                                    <span class="badge bg-primary"
-                                          style="width: 0.6rem; height: 0.6rem; border-radius: 50%; padding:0;"></span>
-                                    <span>{f}</span>
+                        <ul class="p-0 m-0" style="list-style: none;">
+                            {#each plan.features as f, index}
+                                <li class="feature-item py-3 border-top {index === plan.features.length - 1 ? 'border-bottom' : ''}">
+                                    <div class="d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                        <span class="text-secondary">{f}</span>
+                                    </div>
                                 </li>
                             {/each}
                         </ul>
                     </div>
-                    <div class="card-footer bg-white border-0 pb-4">
-                        <a href="/contact" class="btn btn-primary w-100">Quiero este plan</a>
+                    <div class="card-footer bg-white border-0 pb-4 pt-3">
+                        <a href="/contact" class="btn btn-primary btn-lg w-100 fw-semibold shadow-sm">
+                            Quiero este plan
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
                     </div>
                     {#if plan.highlight}
-                        <div class="best-choice-badge">BEST CHOICE</div>
+                        <div class="best-choice-badge">
+                            <i class="bi bi-star-fill me-1"></i>
+                            MÁS POPULAR
+                        </div>
                     {/if}
                 </div>
             </div>
