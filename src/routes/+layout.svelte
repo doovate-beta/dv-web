@@ -2,7 +2,7 @@
     import 'bootstrap/dist/css/bootstrap.min.css';
     import {onMount, setContext} from 'svelte';
     import {innerWidth} from 'svelte/reactivity/window';
-    import {Collapse, Icon, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from "@sveltestrap/sveltestrap";
+    import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from "@sveltestrap/sveltestrap";
     import {page} from '$app/stores';
 
     let {children} = $props();
@@ -63,8 +63,11 @@
             <Nav class="ms-auto">
                 {#each Object.entries(routes) as [route, label]}
                     <NavItem class="w-100 my-2">
-                        <NavLink href={route} class={`text-white fs-5 py-2 ${isActive(route) ? 'active' : ''}`}
-                                 aria-current={isActive(route) ? 'page' : undefined}>{label}</NavLink>
+                        <NavLink href={route}
+                                 class={`text-white fs-5 py-2 ${isActive(route) ? 'active' : ''}`}
+                                 aria-current={isActive(route) ? 'page' : undefined}
+                                 on:click={() => isNavbarOpen = false}
+                        >{label}</NavLink>
                     </NavItem>
                 {/each}
             </Nav>
@@ -101,11 +104,12 @@
             <span style="color: black">© {currentYear} Doovate</span>
         </div>
         <div class="d-flex align-items-center gap-3">
-            <a href="https://instagram.com">
+            <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener">
                 <i class="bi bi-instagram fs-5 text-light"></i>
             </a>
 
-            <a href="https://facebook.com/doovate" target="_blank" rel="noopener" class="text-white">
+            <a href="https://facebook.com/doovate" aria-label="Facebook" target="_blank" rel="noopener"
+               class="text-white">
                 <i class="bi bi-facebook fs-5 text-light"></i>
             </a>
         </div>
@@ -307,5 +311,16 @@
         color: #fff !important;
         background: linear-gradient(135deg, rgba(21, 168, 202, .45), rgba(132, 13, 131, .45));
         box-shadow: 0 0 0 2px rgba(255, 255, 255, .22) inset, 0 4px 10px rgba(0, 0, 0, .12);
+    }
+
+    :global(.card) {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* Hover effects para cards */
+    :global(.card:hover) {
+        transform: translateY(-2px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     }
 </style>

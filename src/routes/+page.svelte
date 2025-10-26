@@ -1,9 +1,5 @@
 <script lang="ts">
-    import {getContext, onMount} from 'svelte';
     import {
-        Form,
-        FormGroup,
-        Input,
         Button,
         Row,
         Col,
@@ -13,30 +9,6 @@
         Card
     } from '@sveltestrap/sveltestrap';
     import ContactSection from '$lib/ContactSection.svelte';
-
-    let validated = $state(false);
-    let isSubmitting = $state(false);
-
-    const getIsDesktop = getContext<() => boolean>('getIsDesktop');
-    const largeScreen = $derived(getIsDesktop());
-
-    // Función para manejar el envío del formulario
-    const handleSubmit = async (e: Event) => {
-        e.preventDefault();
-        if (isSubmitting) return;
-
-        validated = true;
-        const form = e.target as HTMLFormElement;
-
-        if (form.checkValidity()) {
-            isSubmitting = true;
-            // Aquí iría la lógica de envío
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulación
-            isSubmitting = false;
-            // Mostrar mensaje de éxito o redirigir
-        }
-    };
-
 
 </script>
 
@@ -48,7 +20,7 @@
 </svelte:head>
 
 <main class="container-fluid py-5 px-0 " style="width: 92%">
-    <!-- Sección Intro -->
+    <!-- Intro section -->
     <Container class="py-5 mb-5 mt-3">
         <Row class="align-items-center min-vh-50">
             <Col md={6} class="mb-4 mb-md-0">
@@ -400,32 +372,8 @@
         box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
     }
 
-    /* Efecto de sombra suave para imágenes */
-    .drop-shadow {
-        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.1));
-    }
-
-    /* Transiciones suaves para botones */
-    :global(.btn) {
-        transition: all 0.3s ease;
-    }
-
-    /* Hover effects para cards */
-    :global(.card:hover) {
-        transform: translateY(-2px);
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-        transition: all 0.3s ease;
-    }
-
-
     /* Espaciado consistente entre secciones */
     section + section {
         margin-top: 5rem;
-    }
-
-    /* Loading spinner personalizado */
-    .spinner-border-sm {
-        width: 1rem;
-        height: 1rem;
     }
 </style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import {onMount} from 'svelte';
     import {
         Form,
         FormGroup,
@@ -38,7 +38,8 @@
             if (typeof window !== 'undefined' && nextUrlInput) {
                 nextUrlInput.value = `${window.location.origin}/gracias`;
             }
-        } catch {}
+        } catch {
+        }
     });
 </script>
 
@@ -57,82 +58,83 @@
                         <h4 class="mb-4">Cuéntanos sobre tu proyecto</h4>
                         <Form {validated} action="https://formsubmit.co/sysadmin@doovate.com" method="POST">
                             <!-- FormSubmit configuration -->
-                            <input type="hidden" name="_subject" value="Nuevo mensaje desde doovate.com" />
-                            <input type="hidden" name="_template" value="table" />
-                            <input type="hidden" name="_captcha" value="false" />
-                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+                            <input type="hidden" name="_subject" value="Nuevo mensaje desde doovate.com"/>
+                            <input type="hidden" name="_template" value="table"/>
+                            <input type="hidden" name="_captcha" value="false"/>
+                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
                             <!-- Redirect after submit: set dynamically to absolute /gracias URL for FormSubmit -->
-                            <input type="hidden" name="_next" value="/gracias" bind:this={nextUrlInput} />
+                            <input type="hidden" name="_next" value="/gracias" bind:this={nextUrlInput}/>
                             <Row class="g-3">
                                 <Col md={6}>
                                     <FormGroup floating label="Nombre">
                                         <Input
-                                            name="name"
-                                            feedback="Por favor ingresa tu nombre"
-                                            placeholder="Nombre"
-                                            required
-                                            disabled={isSubmitting}
+                                                name="name"
+                                                feedback="Por favor ingresa tu nombre"
+                                                placeholder="Nombre"
+                                                required
+                                                disabled={isSubmitting}
                                         />
                                     </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                     <FormGroup floating label="Correo electrónico">
                                         <Input
-                                            name="email"
-                                            placeholder="Correo electrónico"
-                                            feedback="Por favor ingresa un correo válido"
-                                            required
-                                            type="email"
-                                            disabled={isSubmitting}
+                                                name="email"
+                                                placeholder="Correo electrónico"
+                                                feedback="Por favor ingresa un correo válido"
+                                                required
+                                                type="email"
+                                                disabled={isSubmitting}
                                         />
                                     </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                     <FormGroup floating label="Teléfono">
                                         <Input
-                                            name="phone"
-                                            placeholder="Teléfono"
-                                            feedback="Por favor ingresa un teléfono válido"
-                                            required
-                                            type="tel"
-                                            disabled={isSubmitting}
+                                                name="phone"
+                                                placeholder="Teléfono"
+                                                feedback="Por favor ingresa un teléfono válido"
+                                                required
+                                                type="tel"
+                                                disabled={isSubmitting}
                                         />
                                     </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                     <FormGroup floating label="Empresa">
                                         <Input
-                                            name="company"
-                                            placeholder="Empresa"
-                                            feedback="Por favor ingresa tu empresa"
-                                            required
-                                            disabled={isSubmitting}
+                                                name="company"
+                                                placeholder="Empresa"
+                                                feedback="Por favor ingresa tu empresa"
+                                                required
+                                                disabled={isSubmitting}
                                         />
                                     </FormGroup>
                                 </Col>
                                 <Col xs={12}>
                                     <FormGroup floating label="Mensaje">
                                         <Input
-                                            name="message"
-                                            style="min-height: 120px"
-                                            type="textarea"
-                                            placeholder="Cuéntanos sobre tu proyecto y necesidades..."
-                                            feedback="Por favor ingresa un mensaje"
-                                            required
-                                            disabled={isSubmitting}
+                                                name="message"
+                                                style="min-height: 120px"
+                                                type="textarea"
+                                                placeholder="Cuéntanos sobre tu proyecto y necesidades..."
+                                                feedback="Por favor ingresa un mensaje"
+                                                required
+                                                disabled={isSubmitting}
                                         />
                                     </FormGroup>
                                 </Col>
                                 <Col xs={12}>
                                     <Button
-                                        type="submit"
-                                        color="primary"
-                                        size="lg"
-                                        disabled={isSubmitting}
-                                        class="w-100"
+                                            type="submit"
+                                            color="primary"
+                                            size="lg"
+                                            disabled={isSubmitting}
+                                            class="w-100"
                                     >
                                         {#if isSubmitting}
-                                            <div class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></div>
+                                            <div class="spinner-border spinner-border-sm me-2" role="status"
+                                                 aria-hidden="true"></div>
                                             Enviando...
                                         {:else}
                                             <Icon name="send" class="me-2"/>

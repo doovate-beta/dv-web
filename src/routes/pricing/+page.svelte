@@ -69,7 +69,7 @@
     <div class="row g-4">
         {#each plans as plan, i}
             <div class="col-12 col-md-6 col-lg-4 d-flex reveal-up" style={`animation-delay: ${i * 120}ms`}>
-                <div class={`card shadow-sm flex-fill h-100 price-card ${plan.highlight ? 'featured' : ''}`}>
+                <div class={`card shadow-sm mx-1 flex-fill h-100 price-card ${plan.highlight ? 'featured' : ''}`}>
                     <div class="card-header bg-white border-0 pt-4 pb-0">
                         <h3 class="h4 mb-1">{plan.name}</h3>
                         <div class="text-muted">{plan.specs}</div>
@@ -150,7 +150,7 @@
         box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
         border: 2px solid transparent; /* required for border-image */
         border-image: var(--brand-gradient) 1;
-        border-radius: 1rem;
+        border-radius: 3rem;
     }
 
     /* Featured (Paquete medio) slightly larger to draw attention */
@@ -160,7 +160,7 @@
         box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
         border: 2px solid transparent; /* persistent gradient border for featured */
         border-image: var(--brand-gradient) 1;
-        border-radius: 1rem;
+        border-radius: 50px;
     }
 
     .price-card.featured:hover {
