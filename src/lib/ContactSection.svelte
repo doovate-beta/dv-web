@@ -15,9 +15,7 @@
 
     let validated = $state(false);
     let isSubmitting = $state(false);
-    let nextUrlInput: HTMLInputElement | null = null;
 
-    // Mantener placeholder por si en el futuro se usa envío manual
     const handleSubmit = async (e: Event) => {
         e.preventDefault();
         if (isSubmitting) return;
@@ -27,20 +25,23 @@
 
         if (form.checkValidity()) {
             isSubmitting = true;
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-            isSubmitting = false;
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    window.location.href = '/gracias';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                isSubmitting = false;
+            }
         }
     };
-
-    onMount(() => {
-        // Asegura que FormSubmit redirija a nuestro dominio absoluto
-        try {
-            if (typeof window !== 'undefined' && nextUrlInput) {
-                nextUrlInput.value = `${window.location.origin}/gracias`;
-            }
-        } catch {
-        }
-    });
 </script>
 
 <!-- Sección Contact (reusable) -->
@@ -56,14 +57,10 @@
                 <Card class="shadow-sm border-0">
                     <CardBody class="p-4">
                         <h4 class="mb-4">Cuéntanos sobre tu proyecto</h4>
-                        <Form {validated} action="https://formsubmit.co/sysadmin@doovate.com" method="POST">
-                            <!-- FormSubmit configuration -->
-                            <input type="hidden" name="_subject" value="Nuevo mensaje desde doovate.com"/>
-                            <input type="hidden" name="_template" value="table"/>
-                            <input type="hidden" name="_captcha" value="false"/>
-                            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
-                            <!-- Redirect after submit: set dynamically to absolute /gracias URL for FormSubmit -->
-                            <input type="hidden" name="_next" value="/gracias" bind:this={nextUrlInput}/>
+                        <Form {validated} on:submit={handleSubmit}>
+                            <!-- Web3Forms configuration -->
+                            <input type="hidden" name="access_key" value="33f8012b-d471-4968-ab51-c05c1201203e"/>
+
                             <Row class="g-3">
                                 <Col md={6}>
                                     <FormGroup floating label="Nombre">
@@ -170,7 +167,6 @@
                     </div>
 
                     <div class="d-grid gap-2">
-
                         <Button href="https://wa.me/34613489829" target="_blank" color="outline-success" size="lg">
                             <Icon name="whatsapp" class="me-2"/>
                             Hablar por WhatsApp
