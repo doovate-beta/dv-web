@@ -71,7 +71,7 @@
             </Col>
             <Col md={6} class="text-center">
                 <img
-                        src="/Design.png"
+                        src="/Site Stats.svg"
                         alt="Imagen principal del sitio"
                         class="img-fluid rounded shadow-lg object-fit-cover"
                         loading="lazy"
@@ -88,7 +88,8 @@
                 <div class="frost-card d-inline-block p-4"
                      style="--frost-radius: 28px; --frost-opacity: .92; --frost-brightness: 1; --frost-blur: 8px;">
                     <img
-                            src="/phone.png"
+                            src="/Web devices.gif
+                           "
                             alt="Odoo en dispositivos móviles"
                             class="img-fluid"
                             style="max-width: 400px;"
@@ -145,7 +146,7 @@
             <Col lg={6} class="text-center mb-4 mb-lg-0">
                 <div class="rounded-5 shadow-lg p-4 bg-white">
                     <img
-                            src="/piezes.png"
+                            src="/Team work.gif"
                             alt="Módulos personalizables de Odoo"
                             class="img-fluid"
                             style="max-width: 100%;"

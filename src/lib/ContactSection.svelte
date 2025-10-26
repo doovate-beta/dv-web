@@ -153,14 +153,14 @@
                         <div class="d-flex mb-3">
                             <Icon name="geo-alt-fill" class="text-primary me-3 mt-1"/>
                             <div>
-                                <strong>Doovate S.A. de C.V.</strong><br>
+                                <strong>Doovate C.B. </strong><br>
                                 Dirección completa<br>
                                 Ciudad, Estado, CP
                             </div>
                         </div>
                         <div class="d-flex mb-3">
                             <Icon name="telephone-fill" class="text-primary me-3 mt-1"/>
-                            <a href="tel:676765765" class="text-decoration-none">676 765 765</a>
+                            <a href="tel:613289829" class="text-decoration-none">613 489 829</a>
                         </div>
                         <div class="d-flex mb-4">
                             <Icon name="envelope-fill" class="text-primary me-3 mt-1"/>
@@ -169,10 +169,7 @@
                     </div>
 
                     <div class="d-grid gap-2">
-                        <Button href="mailto:sysadmin@doovate.com" color="success" size="lg">
-                            <Icon name="calendar-check" class="me-2"/>
-                            Agendar llamada
-                        </Button>
+
                         <Button href="https://wa.me/XXXXXXXXXXX" target="_blank" color="outline-success" size="lg">
                             <Icon name="whatsapp" class="me-2"/>
                             Hablar por WhatsApp
